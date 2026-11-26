@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Running Text Arduino - Detail Proyek</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf2f8;
+      color: #3b0724;
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 20px auto;
+      background-color: #fce7f3;
+      border-left: 6px solid #be185d;
+      border-radius: 12px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 12px rgba(190, 24, 93, 0.08);
+    }
+
+    .back-link {
+      display: inline-block;
+      text-decoration: none;
+      color: #db2777;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .category {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #db2777;
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      color: #831843;
+      margin-bottom: 8px;
+    }
+
+    .skills {
+      font-size: 0.9rem;
+      color: #9d174d;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #f9a8d4;
+    }
+
+    .project-image {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* SIMULASI LCD SEDERHANA */
+    .box {
+      background-color: #fff5f7;
+      border: 1.5px solid #f472b6;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #9d174d;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .lcd {
+      background-color: #1d4ed8;
+      color: #ffffff;
+      font-family: monospace;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 12px;
+      border-radius: 8px;
+      border: 3px solid #831843;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .jalan {
+      display: inline-block;
+      padding-left: 100%;
+      animation: geser 8s linear infinite;
+    }
+
+    @keyframes geser {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    pre {
+      background-color: #3b0724;
+      color: #fce7f3;
+      padding: 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    article p {
+      font-size: 1rem;
+      margin-bottom: 14px;
+      text-align: justify;
+    }
+
+    article p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* NOTE BOX */
+    .note-box {
+      margin-top: 18px;
+      background-color: #fff5f7;
+      border-left: 4px solid #db2777;
+      border-top: 1px solid #fbcfe8;
+      border-right: 1px solid #fbcfe8;
+      border-bottom: 1px solid #fbcfe8;
+      border-radius: 0 10px 10px 0;
+      padding: 14px 16px;
+      font-style: italic;
+      color: #831843;
+      font-size: 0.96rem;
+    }
+
+    .note-title {
+      display: block;
+      font-style: normal;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #be185d;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <a href="index.html" class="back-link">&larr; Kembali ke Daftar Karya</a>
+
+    <div class="category">Elektronika &amp; Mikrokontroler</div>
+    <h1>Catatan Proyek Running Text Arduino</h1>
+    <div class="skills">Kemampuan: Arduino Uno, LCD I2C &amp; logika dasar</div>
+
+    <img src="IMAGES/arduinoo.jpg" alt="Dokumentasi Running Text Arduino" class="project-image">
+
+    <!-- CONTOH RUNNING TEXT -->
+    <section class="box">
+      <span class="label">Contoh Tampilan Running Text</span>
+      <div class="lcd">
+        <div class="jalan">Welcome Callysta Cantik — Di SMA BOASH EXCELLENT</div>
+      </div>
+    </section>
+
+    <!-- KODE ARDUINO -->
+    <section class="box">
+      <span class="label">Kode Arduino</span>
+      <pre><code>#include &lt;LiquidCrystal_I2C.h&gt;
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+}
+
+void loop() {
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome Callysta Cantik");
+  lcd.setCursor(0, 1);
+  lcd.print("Di SMA BOASH EXCELLENT");
+
+  for (int i = 0; i &lt; 6; i++) {
+    lcd.scrollDisplayLeft();
+    delay(200);
+  }
+}</code></pre>
+    </section>
+
+    <!-- CERITA SINGKAT -->
+    <article>
+      <p>
+        Proyek ini berawal dari Mr Salas, tentang bagaimana tulisan bisa berjalan di layar LCD memakai Arduino. Dari situ aku belajar dari Mr Salas, bagaimana menyusun kode sederhana dan mengatur pergeseran teksnya.
+      </p>
+      <p>
+        Sempat ada bagian yang kurang pas, mulai dari posisi teks sampai kecepatan gesernya, tapi setelah dicoba lagi dan lagi, akhirnya bisa rapi &amp; terstruktur. Dari sini aku belajar sabar dan estetik saat merangkai logika.
+      </p>
+      <div class="note-box">
+        <span class="note-title">Catatan Kecil</span>
+        Terima kasih, Mr Salas, sudah memberikan ruang untuk kembali merangkai dan mencapai proyek yang tak pernah kupelajari sebelumnya—dari percobaan yang sempat goyah menjadi langkah kecil yang terasa berarti.
+      </div>
+    </article>
+  </main>
+
+</body>
+</html>
